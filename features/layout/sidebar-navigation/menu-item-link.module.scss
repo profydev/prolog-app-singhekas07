@@ -29,4 +29,13 @@
 .icon {
   width: space.$s6;
   margin-right: space.$s3;
+  transition: transform 0.2s ease-in-out 0s;
+}
+
+.iconCollapsed {
+  transform: rotate(180deg);
+}
+
+.iconNotCollapsed {
+  transform: rotate(0deg);
 }
