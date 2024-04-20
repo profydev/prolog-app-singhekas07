@@ -25,8 +25,7 @@ export function MenuItemButton({
         <img 
         className={`${styles.icon} ${
             isCollapsed && text == "Collapse"
-              ? styles.iconCollapsed
-              : styles.iconNotCollapsed
+              ? styles.iconCollapsed : styles.iconNotCollapsed
           }`} 
           src={iconSrc} alt={`${text} icon`} />{" "}
         {!isCollapsed && text}{" "}
