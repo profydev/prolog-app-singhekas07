@@ -22,12 +22,15 @@ export function MenuItemButton({
     <li className={classNames(styles.listItem, className)}>
       <Button className={styles.anchor} onClick={onClick}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img 
-        className={`${styles.icon} ${
+        <img
+          className={`${styles.icon} ${
             isCollapsed && text == "Collapse"
-              ? styles.iconCollapsed : styles.iconNotCollapsed
-          }`} 
-          src={iconSrc} alt={`${text} icon`} />{" "}
+              ? styles.iconCollapsed
+              : styles.iconNotCollapsed
+          }`}
+          src={iconSrc}
+          alt={`${text} icon`}
+        />{" "}
         {!isCollapsed && text}{" "}
       </Button>
     </li>
