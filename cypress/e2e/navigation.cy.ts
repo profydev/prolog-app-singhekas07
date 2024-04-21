@@ -8,8 +8,6 @@ describe("Sidebar Navigation", () => {
       cy.viewport(1025, 900);
     });
 
-    const supportEmail = "support@prolog-app.com";
-
     it("links are working", () => {
       // check that each link leads to the correct page
       cy.get("nav")
