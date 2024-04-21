@@ -49,6 +49,18 @@ describe("Issue List", () => {
         });
     });
 
+    it("contains accurate number of events and users for each issue", () => {
+      cy.get("main")
+        .find("tbody")
+        .find("tr")
+        .each(($el, index) => {
+          const issue = mockIssues1.items[index];
+
+          cy.wrap($el).find("td").eq(-2).should("have.text", issue.numEvents); //compar screen data with mock data
+          cy.wrap($el).find("td").eq(-1).should("have.text", issue.numUsers);
+        });
+    });
+
     it("paginates the data", () => {
       // test first page
       cy.contains("Page 1 of 3");
