@@ -40,7 +40,7 @@ describe("Sidebar Navigation", () => {
 
       cy.get("@windowOpen").should(
         "be.calledWith",
-        "mailto:support@prolog-app.com?subject=Support%20Request%3A%20",
+        "mailto:support@prolog-app.com?subject=Support Request",
       );
     });
 
