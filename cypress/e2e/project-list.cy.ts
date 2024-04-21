@@ -1,5 +1,6 @@
 import capitalize from "lodash/capitalize";
 import mockProjects from "../fixtures/projects.json";
+import { ProjectStatus } from "@api/projects.types";
 
 describe("Project List", () => {
   beforeEach(() => {
@@ -36,6 +37,44 @@ describe("Project List", () => {
           cy.wrap($el)
             .find("a")
             .should("have.attr", "href", "/dashboard/issues");
+        });
+    });
+
+    it("provides each project status with its appropriate color", () => {
+      cy.get("main")
+        .find("li")
+        .each(($el, index) => {
+          const statusColors: { [index: string]: string } = {
+            [ProjectStatus.info]: "rgb(2, 122, 72)",
+            [ProjectStatus.warning]: "rgb(181, 71, 8)",
+            [ProjectStatus.error]: "rgb(180, 35, 24)",
+          };
+          // get element
+          const element = cy.wrap($el).find("div[class^='badge_container']");
+          // get status
+          const status = mockProjects[index].status;
+          // check proper color for status
+
+          element.should("have.css", "color", statusColors[status]);
+        });
+    });
+
+    it("provides appropriate text for each project status", () => {
+      cy.get("main")
+        .find("li")
+        .each(($el, index) => {
+          const statusTexts: { [index: string]: string } = {
+            [ProjectStatus.info]: "stable",
+            [ProjectStatus.warning]: "warning",
+            [ProjectStatus.error]: "critical",
+          };
+          // get element
+          const element = cy.wrap($el).find("div[class^='badge_container']");
+          // get status
+          const status = mockProjects[index].status;
+          // check proper color for status
+
+          element.invoke("text").should("eq", capitalize(statusTexts[status]));
         });
     });
   });
