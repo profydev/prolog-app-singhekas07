@@ -6,6 +6,7 @@ describe("Sidebar Navigation", () => {
   context("desktop resolution", () => {
     beforeEach(() => {
       cy.viewport(1025, 900);
+      cy.get('[data-cy="sidebar-nav-links"]').as("nav");
     });
 
     it("links are working", () => {
