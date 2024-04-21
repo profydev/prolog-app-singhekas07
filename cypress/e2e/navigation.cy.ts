@@ -8,6 +8,8 @@ describe("Sidebar Navigation", () => {
       cy.viewport(1025, 900);
     });
 
+    const supportEmail = "support@prolog-app.com";
+
     it("links are working", () => {
       // check that each link leads to the correct page
       cy.get("nav")
@@ -29,6 +31,19 @@ describe("Sidebar Navigation", () => {
       cy.get("nav")
         .contains("Settings")
         .should("have.attr", "href", "/dashboard/settings");
+    });
+
+    it("can send a new email message to support", () => {
+      cy.window().then((win) => {
+        cy.stub(win, "open").as("windowOpen");
+      });
+
+      cy.get("nav").contains("Support").click();
+
+      cy.get("@windowOpen").should(
+        "be.calledWith",
+        "mailto:support@prolog-app.com?subject=Support%20Request%3A%20",
+      );
     });
 
     it("is collapsible", () => {
