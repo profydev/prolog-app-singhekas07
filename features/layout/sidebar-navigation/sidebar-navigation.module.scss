@@ -60,7 +60,8 @@
   width: 1.4375rem;
   display: none;
 
-  @media (min-width: breakpoint.$desktop) { //desktop and collapsed pe show small ko
+  @media (min-width: breakpoint.$desktop) {
+    // desktop and collapsed pe show small ko
     &.isCollapsed {
       display: block;
     }
@@ -68,9 +69,10 @@
 }
 
 .largeLogo {
-  width: 7.375rem;  //by default show this
+  width: 7.375rem; //by default show this
 
-  @media (min-width: breakpoint.$desktop) {  //desktop and collapsed pe not show large
+  @media (min-width: breakpoint.$desktop) {
+    // desktop and collapsed pe not show large
     &.isCollapsed {
       display: none;
     }
