@@ -1,12 +1,12 @@
 describe("Sidebar Navigation", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000/dashboard");
+    cy.get('[data-cy="sidebar-nav-links"]').as("nav");
   });
 
   context("desktop resolution", () => {
     beforeEach(() => {
       cy.viewport(1025, 900);
-      cy.get('[data-cy="sidebar-nav-links"]').as("nav");
     });
 
     it("links are working", () => {
