@@ -6,7 +6,6 @@
 
 .container {
   background: color.$gray-900;
-
   height: 100vh;
   display: grid;
   grid-template: "navigation" auto "main" 1fr "footer " auto / 1fr;
