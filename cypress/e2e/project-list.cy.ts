@@ -2,6 +2,8 @@ import capitalize from "lodash/capitalize";
 import mockProjects from "../fixtures/projects.json";
 import { ProjectStatus } from "@api/projects.types";
 
+// Cypress fixtures are used to store test data for automation, and the fixtures folder is placed inside the Cypress project. The fixtures folder contains JSON files, which contain test data that can be read by multiple tests
+
 describe("Project List", () => {
   beforeEach(() => {
     // setup request mock
@@ -19,6 +21,22 @@ describe("Project List", () => {
   context("desktop resolution", () => {
     beforeEach(() => {
       cy.viewport(1025, 900);
+    });
+
+    it("renders a loading spinner", () => {
+      // setup request mock wait some time before continuing
+      cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+        // delayMs: 100,
+        fixture: "projects.json",
+      });
+
+      // during wait, open project page
+      cy.visit(`http://localhost:3000/dashboard`);
+
+      // fetch spinner
+      cy.get('[data-cy="loading"]').should("be.visible");
+      // request is resolved, spinner should be removed.
+      cy.get('[data-cy="loading"]').should("not.exist");
     });
 
     it("renders the projects", () => {
