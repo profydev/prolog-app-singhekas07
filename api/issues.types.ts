@@ -14,3 +14,14 @@ export type Issue = {
   numEvents: number;
   numUsers: number;
 };
+
+export enum IssueStatus {
+  open = "open",
+  resolved = "resolved",
+}
+
+export type IssueFilters = {
+  status?: IssueStatus;
+  level?: IssueLevel;
+  project?: string;
+};

@@ -58,3 +58,9 @@
 .pageNumber {
   font: font.$text-sm-medium;
 }
+
+.issueContainer {
+  display: flex;
+  flex-direction: column;
+  gap: space.$s6;
+}
