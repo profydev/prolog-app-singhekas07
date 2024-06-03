@@ -1,6 +1,6 @@
 import { Routes } from "@config/routes";
 import styles from "./index.module.scss";
-
+//
 const IssuesPage = () => {
   return (
     <div>
